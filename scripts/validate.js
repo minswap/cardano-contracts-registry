@@ -13,7 +13,7 @@ const contractSchema = Joi.object({
   language: Joi.string().valid("PLUTUS", "NATIVESCRIPT").required(),
   languageVersion: Joi.number().required(),
   scriptHash: Joi.string().length(56).required(),
-  github: Joi.string().max(80),
+  github: Joi.string().max(100),
   description: Joi.string().max(140),
   audit: Joi.array().items(auditSchema),
 });
@@ -21,9 +21,10 @@ const contractSchema = Joi.object({
 const schema = Joi.object({
   projectName: Joi.string().max(30).required(),
   labelPrefix: Joi.string().max(16).required(),
+  github: Joi.string().max(100),
   website: Joi.string().max(35),
-  twitter: Joi.string().max(16),
-  discord: Joi.string().max(40),
+  twitter: Joi.string().max(100),
+  discord: Joi.string().max(100),
   category: Joi.string().valid(
     "DEX",
     "DEFI",
@@ -32,7 +33,8 @@ const schema = Joi.object({
     "NFT",
     "GAMING",
     "TOKEN",
-    "ORACLE"
+    "ORACLE",
+    "TOOLS"
   ),
   description: Joi.string().max(140),
   contracts: Joi.array().items(contractSchema).min(1),
